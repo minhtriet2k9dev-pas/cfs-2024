@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+// Pages
+import MainPage from "./Pages/mainPage";
+import Responsed from "./Pages/responsed";
+import Login from "./Pages/login";
+import Admin from "./Pages/admin";
+import React, { useEffect, useState, useRef } from "react";
+import {
+	Route,
+	Link,
+	Routes,
+	BrowserRouter,
+	Redirect,
+	Switch,
+} from "react-router-dom";
+import io from "socket.io-client";
+const socket = io.connect("http://localhost:3001");
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<MainPage />} />
+				<Route path="/Responsed" element={<Responsed />} />
+				<Route path="/Login" element={<Login />} />
+				<Route path="/Admin" element={<Admin />} />
+			</Routes>
+		</BrowserRouter>
+	);
 }
 
 export default App;
